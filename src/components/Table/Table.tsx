@@ -7,6 +7,7 @@ import TableActionButton from './styled-component/TableActionButton';
 import { MdEdit } from "react-icons/md";
 import { BsXLg } from 'react-icons/bs';
 import { FaCog } from 'react-icons/fa';
+import Swal from 'sweetalert2';
 export interface TableInterface {
 	colums: any,
 	data: any[],
@@ -36,7 +37,26 @@ const Table: React.FC<TableInterface> = (
 	}
 
 	const handleDelete = (id: any) => {
-		deleteFunction(id)
+		Swal.fire({
+			title: '¿Esta seguro de eliminar el registro?',
+			text: "Este tipo de cambios no es reversible",
+			icon: 'question',
+			showCancelButton: true,
+			confirmButtonColor: '#007BFF',
+			cancelButtonColor: '#FF5151',
+			confirmButtonText: 'Si, elimínalo',
+			cancelButtonText: 'Cancelar',
+			iconColor: '#ffc15d',
+		}).then((result) => {
+			if (result.isConfirmed) {
+				deleteFunction(id)
+				Swal.fire(
+					'Deleted!',
+					'Your file has been deleted.',
+					'success'
+				)
+			}
+		})
 	}
 
 	const handleCustomAction = (id: any) => {
