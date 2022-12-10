@@ -10,7 +10,7 @@ import { FaCog } from 'react-icons/fa';
 import Swal from 'sweetalert2';
 export interface TableInterface {
 	colums: any,
-	data: any[],
+	data: any[] | null,
 	crudButtons: boolean,
 	customButton: boolean,
 	customButtonTitle: string,
@@ -39,7 +39,7 @@ const Table: React.FC<TableInterface> = (
 	const handleDelete = (id: any) => {
 		Swal.fire({
 			title: '¿Esta seguro de eliminar el registro?',
-			text: "Este tipo de cambios no es reversible",
+			text: "Este tipo de cambios no son reversibles",
 			icon: 'question',
 			showCancelButton: true,
 			confirmButtonColor: '#007BFF',
@@ -51,8 +51,8 @@ const Table: React.FC<TableInterface> = (
 			if (result.isConfirmed) {
 				deleteFunction(id)
 				Swal.fire(
-					'Deleted!',
-					'Your file has been deleted.',
+					'Eliminado!',
+					'El registro fue eliminado con éxito',
 					'success'
 				)
 			}

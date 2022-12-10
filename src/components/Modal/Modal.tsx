@@ -24,13 +24,13 @@ const Modal: React.FC<ModalInterface> = ({ isOpen, children, handleCloseModal })
 					<ModalContainer
 						initial={{ opacity: 0 }}
 						animate={{ opacity: 1 }}
-						transition={{ ease: 'easeInOut', times: { duration: .1 } }}
-						exit={{ opacity: 0, transition: { duration: .1, ease: 'easeInOut' } }}
+						transition={{ ease: 'easeInOut', times: { duration: .05 } }}
+						exit={{ opacity: 0, transition: { duration: .05,delay: .1, ease: 'easeInOut' } }}
 					>
 						<motion.div
 							initial={{ opacity: 0, scale: .6 }}
 							animate={{ opacity: 1, scale: 1 }}
-							transition={{ ease: 'easeInOut', duration: .1 }}
+							transition={{ ease: 'easeInOut', duration: .05, delay: .05 }}
 							exit={{ opacity: 0, scale: .6, transition: { duration: .1, ease: 'easeInOut' } }}
 						>
 							<ModalHeader>

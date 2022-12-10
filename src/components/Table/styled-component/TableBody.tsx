@@ -8,6 +8,7 @@ const TableBody = styled.tbody`
       padding: 15px 0;
       text-align: center;
       min-width: 200px;
+      max-width: 500px;
     }
   }
 `
