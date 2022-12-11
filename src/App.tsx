@@ -2,7 +2,6 @@ import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import { AdminOutlet } from "./components/AdminOutlet";
 import { LoginNavbar } from "./components/LoginNavbar";
 import { Navbar } from "./components/Navbar";
-import LocalState from "./context/Locales/LocalProvider";
 import ProductState from "./context/Producto/ProductoProvider";
 import { Empleados } from "./pages/AdminPages/Empleados";
 import { Estadisticas } from "./pages/AdminPages/Estadisticas";
