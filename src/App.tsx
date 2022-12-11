@@ -43,10 +43,10 @@ function App() {
             </ProductState>
           } />
 
-          <Route path="pagos" element={<Pagos />} />
-          <Route path="historial" element={<Historial />} />
-          <Route path="reportes" element={<Reportes />} />
-          <Route path="estadisticas" element={<Estadisticas />} />
+          <Route path="cobrar" element={<Pagos />} />
+          <Route path="pedidos" element={<Historial />} />
+          {/* <Route path="reportes" element={<Reportes />} />
+          <Route path="estadisticas" element={<Estadisticas />} /> */}
           <Route path="*" element={<Navigate to={'inicio'} />} />
         </Route>
       </Routes>
