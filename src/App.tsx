@@ -12,8 +12,6 @@ import { LoginPage } from "./pages/LoginPage"
 
 function App() {
 
-  const location = useLocation()
-
   return (
     <>
       <Routes>
