@@ -37,22 +37,22 @@ const SideBar: React.FC<SideBarInterface> = () => {
 							<FaBox size={25} fill={'#fff'} />
 							<p className='m-0 fs-5 text-light'>Productos</p>
 					</SideLink>
-					<SideLink to={'/admin/pagos'} className='text-decoration-none' >
+					<SideLink to={'/admin/cobrar'} className='text-decoration-none' >
 							<AiFillDollarCircle size={25} fill={'#fff'} />
-							<p className='m-0 fs-5 text-light'>Pagos</p>
+							<p className='m-0 fs-5 text-light'>Cobrar</p>
 					</SideLink>
-					<SideLink to={'/admin/historial'} className='text-decoration-none' >
+					<SideLink to={'/admin/pedidos'} className='text-decoration-none' >
 							<AiOutlineHistory size={25} fill={'#fff'} />
-							<p className='m-0 fs-5 text-light'>Historial</p>
+							<p className='m-0 fs-5 text-light'>Pedidos</p>
 					</SideLink>
-					<SideLink to={'/admin/reportes'} className='text-decoration-none' >
+					{/* <SideLink to={'/admin/reportes'} className='text-decoration-none' >
 							<AiFillFile size={25} fill={'#fff'} />
 							<p className='m-0 fs-5 text-light'>Reportes</p>
 					</SideLink>
 					<SideLink to={'/admin/estadisticas'} className='text-decoration-none' >
 							<RiBarChart2Fill size={25} fill={'#fff'} />
 							<p className='m-0 fs-5 text-light'>Estadísticas</p>
-					</SideLink>
+					</SideLink> */}
 				</div>
 			</div>
 		</SidebarContainer>
