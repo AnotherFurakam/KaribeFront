@@ -10,6 +10,8 @@ import { OpcionProducto } from "./pages/AdminPages/OpcionProducto";
 import { Pagos } from "./pages/AdminPages/Pagos";
 import { Productos } from "./pages/AdminPages/Productos";
 import { LoginPage } from "./pages/LoginPage";
+import PedidoState from "./context/Pedidos/PedidoProvider";
+import { DetallePedido } from "./pages/AdminPages/DetallePedido";
 
 function App() {
   const location = useLocation();
@@ -51,7 +53,23 @@ function App() {
           />
 
           <Route path="cobrar" element={<Pagos />} />
-          <Route path="pedidos" element={<Historial />} />
+          <Route
+            path="pedidos"
+            element={
+              <PedidoState>
+                <Historial />
+              </PedidoState>
+            }
+          />
+          <Route
+            path="pedidos/:id"
+            element={
+              <PedidoState>
+                <DetallePedido />
+              </PedidoState>
+            }
+          />
+
           {/* <Route path="reportes" element={<Reportes />} />
           <Route path="estadisticas" element={<Estadisticas />} /> */}
           <Route path="*" element={<Navigate to={"inicio"} />} />
