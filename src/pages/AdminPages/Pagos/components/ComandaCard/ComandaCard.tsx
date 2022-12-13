@@ -1,7 +1,10 @@
 import React from 'react';
-export interface ComandaCardInterface { }
+import { IComanda } from '../../../../../models/comanda.interface';
+export interface ComandaCardInterface {
+	comanda: IComanda
+}
 
-const ComandaCard: React.FC<ComandaCardInterface> = () => {
+const ComandaCard: React.FC<ComandaCardInterface> = ({comanda}: ComandaCardInterface) => {
 	return (
 		<div className='bg-white rounded-2'>
 			<div className='px-3 py-2 d-flex justify-content-between row'>
@@ -11,10 +14,10 @@ const ComandaCard: React.FC<ComandaCardInterface> = () => {
 				<h4 className='m-0 fs-6 text-success text-center col-3'>Total</h4>
 			</div>
 			<div className='px-3 py-4 bg-primary bg-opacity-25 d-flex justify-content-between row'>
-				<h4 className='m-0 fs-6 text-center col-3'>1</h4>
-				<h4 className='m-0 fs-6 text-center col-3'>Leo</h4>
-				<h4 className='m-0 fs-6 text-center col-3'>David</h4>
-				<h4 className='m-0 fs-6 text-center col-3'>S/. 120</h4>
+				<h4 className='m-0 fs-6 text-center col-3'>{comanda.mesa.nro_mesa}</h4>
+				<h4 className='m-0 fs-6 text-center col-3'>{comanda.cliente}</h4>
+				<h4 className='m-0 fs-6 text-center col-3'>{comanda.empleado.nombre}</h4>
+				<h4 className='m-0 fs-6 text-center col-3'>{comanda.orden.precio_total}</h4>
 			</div>
 		</div>
 	);

@@ -66,6 +66,7 @@ const DetallePedido: React.FC<DetPedidoInterface> = () => {
       <Table
         data={data}
         colums={colums}
+        showOptionColumn={false}
         crudButtons={false}
         customButton={false}
         customButtonTitle={""}

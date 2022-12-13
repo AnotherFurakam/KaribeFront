@@ -11,6 +11,7 @@ import Swal from 'sweetalert2';
 export interface TableInterface {
 	colums: any,
 	data: any[] | null,
+	showOptionColumn?: boolean,
 	crudButtons?: boolean,
 	customButton?: boolean,
 	customButtonTitle?: string,
@@ -23,12 +24,13 @@ const Table: React.FC<TableInterface> = (
 	{
 		colums,
 		data,
+		showOptionColumn = true,
 		crudButtons = true,
 		customButton = false,
 		customButtonTitle = 'Título del botón',
-		editFunction = () => {},
-		deleteFunction = () => {},
-		customFunction = () => {}
+		editFunction = () => { },
+		deleteFunction = () => { },
+		customFunction = () => { }
 	}
 ) => {
 
@@ -76,7 +78,7 @@ const Table: React.FC<TableInterface> = (
 								<th key={index}>{column}</th>)
 						}
 						{
-							crudButtons && <th>OPCIONES</th>
+							showOptionColumn && <th>OPCIONES</th>
 						}
 					</tr>
 				</TableHead>
@@ -96,28 +98,30 @@ const Table: React.FC<TableInterface> = (
 										}
 										)
 									}
-									<td className='d-flex justify-content-center gap-2'>
-										{
-											crudButtons && (
-												<>
-													<TableActionButton type='button' color='#4ECB71' onClick={() => handleEdit(Object.values<any>(d)[0])}>
-														<MdEdit color='#fff' size={30} />
+									{
+										showOptionColumn && <td className='d-flex justify-content-center gap-2'>
+											{
+												crudButtons && (
+													<>
+														<TableActionButton type='button' color='#4ECB71' onClick={() => handleEdit(Object.values<any>(d)[0])}>
+															<MdEdit color='#fff' size={30} />
+														</TableActionButton>
+														<TableActionButton type='button' color='#BD144B' onClick={() => handleDelete(Object.values<any>(d)[0])}>
+															<BsXLg color='#fff' size={30} />
+														</TableActionButton>
+													</>
+												)
+											}
+											{
+												customButton && (
+													<TableActionButton type='button' color='#246fff' onClick={() => handleCustomAction(Object.values<any>(d)[0])}>
+														<span>{customButtonTitle}</span>
+														<FaCog color='#fff' size={30} />
 													</TableActionButton>
-													<TableActionButton type='button' color='#BD144B' onClick={() => handleDelete(Object.values<any>(d)[0])}>
-														<BsXLg color='#fff' size={30} />
-													</TableActionButton>
-												</>
-											)
-										}
-										{
-											customButton && (
-												<TableActionButton type='button' color='#246fff' onClick={() => handleCustomAction(Object.values<any>(d)[0])}>
-													<span>{customButtonTitle}</span>
-													<FaCog color='#fff' size={30} />
-												</TableActionButton>
-											)
-										}
-									</td>
+												)
+											}
+										</td>
+									}
 
 								</tr>
 							)
