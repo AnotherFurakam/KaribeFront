@@ -23,6 +23,9 @@ import LoginForm from '../../models/loginform.interface';
 import { LoginSchema } from '../../validation/login.validation';
 import FormErrorMessage from './styled-components/FormErrorMessage';
 import { LoginNavbar } from '../../components/LoginNavbar';
+import loginService from '../../services/login.service';
+import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -31,6 +34,8 @@ import { LoginNavbar } from '../../components/LoginNavbar';
 export interface LoginPageInterface { }
 
 const LoginPage: React.FC<LoginPageInterface> = () => {
+
+	const navigate = useNavigate()
 
 	useEffect(() => {
 		//* Seteando título
@@ -59,8 +64,19 @@ const LoginPage: React.FC<LoginPageInterface> = () => {
 									initialValues={initialValues}
 									validationSchema={LoginSchema}
 									onSubmit={
-										(values: LoginForm, actions: FormikHelpers<LoginForm>) => {
-											console.log(values)
+										async (values: LoginForm, helpers: FormikHelpers<LoginForm>) => {
+											await loginService.login(values).then(res => {
+												helpers.setSubmitting(false)
+												if (res.success) {
+													navigate('/admin')
+												} else {
+													helpers.setSubmitting(false)
+													Swal.fire({
+														text: res.message,
+														icon: 'error',
+													})
+												}
+											})
 										}
 									}
 								>

@@ -11,12 +11,12 @@ import Swal from 'sweetalert2';
 export interface TableInterface {
 	colums: any,
 	data: any[] | null,
-	crudButtons: boolean,
-	customButton: boolean,
-	customButtonTitle: string,
-	editFunction: (id: any) => void,
-	deleteFunction: (id: any) => void,
-	customFunction: (id: any) => void,
+	crudButtons?: boolean,
+	customButton?: boolean,
+	customButtonTitle?: string,
+	editFunction?: (id: any) => void,
+	deleteFunction?: (id: any) => void,
+	customFunction?: (id: any) => void,
 }
 
 const Table: React.FC<TableInterface> = (
@@ -26,13 +26,14 @@ const Table: React.FC<TableInterface> = (
 		crudButtons = true,
 		customButton = false,
 		customButtonTitle = 'Título del botón',
-		editFunction,
-		deleteFunction,
-		customFunction
+		editFunction = () => {},
+		deleteFunction = () => {},
+		customFunction = () => {}
 	}
 ) => {
 
 	const handleEdit = (id: any) => {
+		console.log(id)
 		editFunction(id)
 	}
 
@@ -74,7 +75,9 @@ const Table: React.FC<TableInterface> = (
 							Object.values(colums).map((column: any, index) =>
 								<th key={index}>{column}</th>)
 						}
-						<th>OPCIONES</th>
+						{
+							crudButtons && <th>OPCIONES</th>
+						}
 					</tr>
 				</TableHead>
 				<TableBody>
