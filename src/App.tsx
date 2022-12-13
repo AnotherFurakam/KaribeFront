@@ -1,5 +1,6 @@
 import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import { AdminOutlet } from "./components/AdminOutlet";
+import { EmpleadoState } from "./context/Empleado/EmpleadoProvider";
 import LocalState from "./context/Locales/LocalProvider";
 import ProductState from "./context/Producto/ProductoProvider";
 import { Empleados } from "./pages/AdminPages/Empleados";
@@ -31,7 +32,12 @@ function App() {
               </LocalState>
             }
           />
-          <Route path="empleados" element={<Empleados />} />
+
+          <Route path="empleados" element={
+            <EmpleadoState>
+              <Empleados />
+            </EmpleadoState>
+          } />
 
           <Route
             path="productos"

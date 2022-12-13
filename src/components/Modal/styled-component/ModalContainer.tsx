@@ -10,7 +10,7 @@ const ModalContainer = styled(motion.div)`
   min-height: 100vh;
   background-color: rgba(50,50,50,.5);
   top: 0;
-
+  position: fixed;
   & >div{
     background-color: white;
     padding: 20px 20px 0 20px;
